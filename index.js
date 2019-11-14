@@ -81,6 +81,8 @@ controller.on('rtm_close', function (bot) {
  */
 // BEGIN EDITING HERE!
 
+//https://api.slack.com/apps/AQJL843UM
+
 controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "I'm here!");
 });
@@ -97,8 +99,6 @@ controller.hears('tell me about Dash?', 'direct_mention', (bot, message) => {
 controller.hears('upload\\s+(\\S+)', 'direct_mention', (bot, message) => {
     bot.reply(message, `Sure, I'll upload the file at ${message.match[1]} for you, ${message.user}!`);
 });
-
-// CLIENT_ID=19929199476.834688139973 CLIENT_SECRET=3386ff03a8cb960f500a7c83f4018fd7 PORT=8765 npm start
 
 // controller.on('direct_message,mention,direct_mention',
 //     (bot, message) => {
