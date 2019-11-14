@@ -82,12 +82,29 @@ controller.on('rtm_close', function (bot) {
 // BEGIN EDITING HERE!
 
 controller.on('bot_channel_join', function (bot, message) {
-    bot.reply(message, "I'm here!")
+    bot.reply(message, "I'm here!");
 });
 
-controller.hears('hello', 'direct_message', function (bot, message) {
+controller.hears('hello', 'direct_message,direct_mention', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
+
+controller.hears('tell me about Dash?', 'direct_mention', (bot, message) => {
+    console.log(message);
+    bot.reply(message, "The lab is currently developing 'Dash', a browser-based hypermedia system designed to facilitate and organize media-rich workflows of images, videos, pdfs, textual documents and more. Written with a TypeScript / React front end served by a NodeJS server (also in TypeScript), this current iteration comes after an initial effort to implement Dash as a native Windows / UWP application.");
+});
+
+controller.hears('upload\\s+(\\S+)', 'direct_mention', (bot, message) => {
+    bot.reply(message, `Sure, I'll upload the file at ${message.match[1]} for you, ${message.user}!`);
+});
+
+// CLIENT_ID=19929199476.834688139973 CLIENT_SECRET=3386ff03a8cb960f500a7c83f4018fd7 PORT=8765 npm start
+
+// controller.on('direct_message,mention,direct_mention',
+//     (bot, message) => {
+        
+//     }
+// );
 
 
 /**
